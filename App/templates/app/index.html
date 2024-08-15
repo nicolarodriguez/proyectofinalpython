@@ -1,0 +1,33 @@
+
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block main %}
+        <!-- Content section-->
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h2>¿Que es una alimantación saludable?</h2>
+                        <p class="lead">Alimentación saludable es aquella que permite un estado óptimo de salud. Debe cubrir las necesidades energéticas y de nutrientes esenciales del cuerpo, incluyendo proteínas, carbohidratos, grasas, vitaminas, minerales y agua</p>
+                        <p class="mb-0">El principal problema de la alimentación actual es el consumo excesivo de calorías, principalmente de azúcares y grasas, además de la elevada ingesta de alcohol. La primera causa de mortalidad en nuestro país son las enfermedades cardiovasculares que se desarrollan en estrecha relación con la obesidad, sedentarismo y en especial, con el tipo de comida que se prefiere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Image element - set the background image for the header in the line below-->
+        <div class="py-5 bg-image-full" style="background-image: url('{% static 'app/images/segundobanner.jpg' %}')"/>
+            <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
+            <div style="height: 20rem"></div>
+        </div>
+        <!-- Content section-->
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock main %}

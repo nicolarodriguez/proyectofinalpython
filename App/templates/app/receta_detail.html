@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+
+{% block main %}
+  <h1>{{ receta.nombre }}</h1>
+  
+  {% if receta.imagen %}
+    <img src="{{ receta.imagen.url }}" alt="Imagen de {{ receta.nombre }}" style="max-width: 600px;">
+  {% endif %}
+  
+  <h2>Ingredientes:</h2>
+  <p>{{ receta.ingredientes }}</p>
+  
+  <h2>Instrucciones:</h2>
+  <p>{{ receta.instrucciones }}</p>
+  
+  <p><strong>Autor:</strong> {{ receta.autor.username }}</p>
+  <p><strong>Publicado el:</strong> {{ receta.fecha_de_creacion }}</p>
+
+  {% if user.is_authenticated and receta.autor == user %}
+    <a href="{% url 'editar_receta' receta.id %}" class="btn btn-secondary">Editar</a>
+  {% endif %}
+
+  <a href="{% url 'recetas_list' %}" class="btn btn-primary">Volver a la lista de recetas</a>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+
+{% block main %}
+  <h1 style="background-color: #f0f0f0; padding: 10px; border-radius: 5px; color: #333333;"> Recetas</h1>
+  {% if recetas %}
+    <ul>
+      {% for receta in recetas %}
+        <li>
+          <h2 style="background-color: #f0f0f0; padding: 10px; border-radius: 5px; color: #333333;" >{{ receta.nombre }}</h2>
+          <p><strong>Autor:</strong> {{ receta.autor.username }}</p>
+          {% if receta.imagen %}
+            <img src="{{ receta.imagen.url }}" alt="Imagen de {{ receta.nombre }}" style="max-width: 300px;">
+          {% endif %}
+          <details>
+            <summary class="btn btn-primary">Leer más</summary>
+            <div>
+              <h2>Ingredientes:</h2>
+              <p>{{ receta.ingredientes }}</p>
+              <h2>Instrucciones:</h2>
+              <p>{{ receta.instrucciones }}</p>
+              <p><strong>Publicado el:</strong> {{ receta.fecha_de_creacion }}</p>
+            </div>
+          </details>
+          {% if user.is_authenticated and receta.autor == user %}
+            <a href="{% url 'editar_receta' receta.id %}" class="btn btn-secondary">Editar</a>
+            <a href="{% url 'borrar_receta' receta.id %}" class="btn btn-secondary">Eliminar</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hay recetas disponibles en este momento. ¡Sé el primero en publicar una!</p>
+  {% endif %}
+    <a href="{% url 'publicar_receta' %}" class="btn btn-primary">Publicar nueva receta</a>
+{% endblock %}
+
